@@ -1,0 +1,45 @@
+title,Tetris,Tetris
+newgame,New game,Nouvelle partie
+loadgame,Load game,Charger partie
+profil,Profil,Profile
+settings,Settings,Paramètres
+exit,Exit,Sortie
+french,French,Français
+english,English,Anglais
+keybinding,Key Binding,Touches
+audio,Audio,Audio
+sfx,SFX,SFX
+music,Music,Musique
+right,Right,Droite
+left,Left,Gauche
+up,Up,Haut
+down,Down,Bas
+pause,Break,Pause
+downquick,Down quickly,Accélérée
+leftR,Left rotation,Rotation gauche
+rightR,Right rotation,Rotation droite
+valid,Valid,Valider
+back,Back,Retour
+2p,:,:
+point,.,.
+k_A,A,A
+k_E,E,E
+k_Z,Z,Z
+k_Q,Q,Q
+k_S,S,S
+k_D,D,D
+k_X,X,X
+k_escape,Escape,Echape
+stat,Statistics,Statistiques
+next,Next,Suivant
+level,Level,Niveau
+scoreboard,Scoreboard,Tableau des scores
+gameover,Game Over,Partie perdu
+nextlevel,Next level,Niveau suivant
+backtogame,Back to game,Retour au jeu
+save,Save,Sauvegarder
+nosave,No save,Aucune sauvegarde
+infini,Infinity,Infini
+classique,Classic,Classique
+delete,Delete,Supprimé
+name,Name,Nom

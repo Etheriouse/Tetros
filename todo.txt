@@ -1,0 +1,32 @@
+mode infini
+
+new game
+load game
+settings
+exit +
+
+new game:
+<classique> <infinity>
+|
+confirm
+exit
+
+inifity -> difficulty up differntly from level but palier of score
+
+load game:
+-game1
+-game2
+-game3
+-etc
+exit:
+
+// scoreboard affiche game uniquement perdu ou fini
+
+settings:
+keybindig +
+language +
+audio +
+
+audio:
+sfx +
+musics +
