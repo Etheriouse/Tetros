@@ -71,10 +71,6 @@ public class Window extends JFrame {
             float max = musicVolume.getMaximum();
             float range = max-min;
             float gain = min + (range * volume);
-            System.out.println("min: " + min);
-            System.out.println("max: " + max);
-            System.out.println("range: " + range);
-            System.out.println("gain: " + gain);
             musicVolume.setValue(gain);
         }
     }
@@ -85,10 +81,6 @@ public class Window extends JFrame {
             float max = sfxVolume.getMaximum();
             float range = max-min;
             float gain = min + (range * volume);
-            System.out.println("min: " + min);
-            System.out.println("max: " + max);
-            System.out.println("range: " + range);
-            System.out.println("gain: " + gain);
             sfxVolume.setValue(gain);
         }
     }
@@ -211,7 +203,6 @@ public class Window extends JFrame {
                 isHold = false;
                 pressedHold = false;
                 keysDown.remove(e.getKeyCode());
-                System.out.println(e.getKeyCode());
             }
         });
 
@@ -251,13 +242,14 @@ public class Window extends JFrame {
         setVolumeMUSIC(0.7f);
         while (isOpen) {
 
-            if(keysDown.contains(KeyEvent.VK_S) && System.currentTimeMillis() - cooldown.get("down") > 150) {
+
+            if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN)) && System.currentTimeMillis() - cooldown.get("down") > 150) {
                 selection+=1;
                 selection%=4;
                 cooldown.put("down", System.currentTimeMillis());
             }
 
-            if(keysDown.contains(KeyEvent.VK_W) && System.currentTimeMillis() - cooldown.get("up") > 150) {
+            if((keysDown.contains(KeyEvent.VK_W) || keysDown.contains(KeyEvent.VK_UP)) && System.currentTimeMillis() - cooldown.get("up") > 150) {
                 selection-=1;
                 selection = selection<0? 3:selection;
                 cooldown.put("up", System.currentTimeMillis());
@@ -297,13 +289,13 @@ public class Window extends JFrame {
         int classique = 1;
         while(newMenu) {
 
-            if(keysDown.contains(KeyEvent.VK_S) && System.currentTimeMillis() - cooldown.get("down") > 150) {
+            if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN)) && System.currentTimeMillis() - cooldown.get("down") > 150) {
                 selection+=1;
                 selection%=4;
                 cooldown.put("down", System.currentTimeMillis());
             }
 
-            if(keysDown.contains(KeyEvent.VK_W) && System.currentTimeMillis() - cooldown.get("up") > 150) {
+            if((keysDown.contains(KeyEvent.VK_W) || keysDown.contains(KeyEvent.VK_UP)) && System.currentTimeMillis() - cooldown.get("up") > 150) {
                 selection-=1;
                 selection = selection<0? 3:selection;
                 cooldown.put("up", System.currentTimeMillis());
@@ -316,13 +308,13 @@ public class Window extends JFrame {
 
             switch (selection) {
                 case 0:
-                    if(keysDown.contains(KeyEvent.VK_D) && System.currentTimeMillis() - cooldown.get("right") > 150) {
+                    if((keysDown.contains(KeyEvent.VK_D) || keysDown.contains(KeyEvent.VK_RIGHT)) && System.currentTimeMillis() - cooldown.get("right") > 150) {
                         classique+=1;
                         classique%=2;
                         cooldown.put("right", System.currentTimeMillis());
                     }
 
-                    if(keysDown.contains(KeyEvent.VK_A) && System.currentTimeMillis() - cooldown.get("left") > 150) {
+                    if((keysDown.contains(KeyEvent.VK_A) || keysDown.contains(KeyEvent.VK_LEFT)) && System.currentTimeMillis() - cooldown.get("left") > 150) {
                         classique-=1;
                         classique = classique<0? 1:classique;
                         cooldown.put("left", System.currentTimeMillis());
@@ -396,13 +388,13 @@ public class Window extends JFrame {
         int max = saves.length<1? saves.length+1:saves.length;
         while (loadMenu) {
 
-            if(keysDown.contains(KeyEvent.VK_S) && System.currentTimeMillis() - cooldown.get("down") > 150) {
+            if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN)) && System.currentTimeMillis() - cooldown.get("down") > 150) {
                 selection+=1;
                 selection%=max+1;
                 cooldown.put("down", System.currentTimeMillis());
             }
 
-            if(keysDown.contains(KeyEvent.VK_W) && System.currentTimeMillis() - cooldown.get("up") > 150) {
+            if((keysDown.contains(KeyEvent.VK_W) || keysDown.contains(KeyEvent.VK_UP)) && System.currentTimeMillis() - cooldown.get("up") > 150) {
                 selection-=1;
                 selection = selection<0? max:selection;
                 cooldown.put("up", System.currentTimeMillis());
@@ -460,13 +452,13 @@ public class Window extends JFrame {
         boolean openMenu = true;
         int selection = 0;
         while(openMenu) {
-            if(keysDown.contains(KeyEvent.VK_S) && System.currentTimeMillis() - cooldown.get("down") > 150) {
+            if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN)) && System.currentTimeMillis() - cooldown.get("down") > 150) {
                 selection+=1;
                 selection%=4;
                 cooldown.put("down", System.currentTimeMillis());
             }
 
-            if(keysDown.contains(KeyEvent.VK_W) && System.currentTimeMillis() - cooldown.get("up") > 150) {
+            if((keysDown.contains(KeyEvent.VK_W) || keysDown.contains(KeyEvent.VK_UP)) && System.currentTimeMillis() - cooldown.get("up") > 150) {
                 selection-=1;
                 selection = selection<0? 3:selection;
                 cooldown.put("up", System.currentTimeMillis());
@@ -512,10 +504,10 @@ public class Window extends JFrame {
             if(keysDown.contains(KeyEvent.VK_Q) && System.currentTimeMillis() - cooldown.get("back") > 150) {
                 cooldown.put("back", System.currentTimeMillis()) ; keymenuOpen = false;
             }
-            if(keysDown.contains(KeyEvent.VK_D) && System.currentTimeMillis() - cooldown.get("right") > 150) {
+            if((keysDown.contains(KeyEvent.VK_D) || keysDown.contains(KeyEvent.VK_RIGHT)) && System.currentTimeMillis() - cooldown.get("right") > 150) {
                 cooldown.put("right", System.currentTimeMillis()) ; page++; page%=3;
             }
-            if(keysDown.contains(KeyEvent.VK_A) && System.currentTimeMillis() - cooldown.get("left") > 150) {
+            if((keysDown.contains(KeyEvent.VK_A) || keysDown.contains(KeyEvent.VK_LEFT)) && System.currentTimeMillis() - cooldown.get("left") > 150) {
                 cooldown.put("left", System.currentTimeMillis()) ; page--; page = page<0?2:page;
             }
             rendererKeyBinding(page);
@@ -526,13 +518,13 @@ public class Window extends JFrame {
         boolean openMenu = true;
         int selection = 0;
         while(openMenu) {
-            if(keysDown.contains(KeyEvent.VK_S) && System.currentTimeMillis() - cooldown.get("down") > 150) {
+            if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN)) && System.currentTimeMillis() - cooldown.get("down") > 150) {
                 selection+=1;
                 selection%=3;
                 cooldown.put("down", System.currentTimeMillis());
             }
 
-            if(keysDown.contains(KeyEvent.VK_W) && System.currentTimeMillis() - cooldown.get("up") > 150) {
+            if((keysDown.contains(KeyEvent.VK_W) || keysDown.contains(KeyEvent.VK_UP)) && System.currentTimeMillis() - cooldown.get("up") > 150) {
                 selection-=1;
                 selection = selection<0? 2:selection;
                 cooldown.put("up", System.currentTimeMillis());
@@ -544,7 +536,7 @@ public class Window extends JFrame {
             }
             switch (selection) {
                 case 1:
-                    if(keysDown.contains(KeyEvent.VK_A) && System.currentTimeMillis() - cooldown.get("left") > 150) {
+                    if((keysDown.contains(KeyEvent.VK_A) || keysDown.contains(KeyEvent.VK_LEFT)) && System.currentTimeMillis() - cooldown.get("left") > 150) {
                         cooldown.put("left", System.currentTimeMillis());
                         volumeMusic-=0.05f;
                         if(volumeMusic<0) {
@@ -552,10 +544,9 @@ public class Window extends JFrame {
                         }
                         setVolumeMUSIC(volumeMusic);
                         playSound("volumeModify.wav");
-                        System.out.println("down volume");
                     }
 
-                    if(keysDown.contains(KeyEvent.VK_D) && System.currentTimeMillis() - cooldown.get("right") > 150) {
+                    if((keysDown.contains(KeyEvent.VK_D) || keysDown.contains(KeyEvent.VK_RIGHT)) && System.currentTimeMillis() - cooldown.get("right") > 150) {
                         cooldown.put("right", System.currentTimeMillis());
                         volumeMusic+=0.05f;
                         if(volumeMusic>1) {
@@ -563,11 +554,10 @@ public class Window extends JFrame {
                         }
                         setVolumeMUSIC(volumeMusic);
                         playSound("volumeModify.wav");
-                        System.out.println("up volume");
                     }
                     break;
                 case 0:
-                    if(keysDown.contains(KeyEvent.VK_A) && System.currentTimeMillis() - cooldown.get("left") > 150) {
+                    if((keysDown.contains(KeyEvent.VK_A) || keysDown.contains(KeyEvent.VK_LEFT)) && System.currentTimeMillis() - cooldown.get("left") > 150) {
                         cooldown.put("left", System.currentTimeMillis());
                         volumeSfx-=0.05f;
                         if(volumeSfx<0) {
@@ -575,10 +565,9 @@ public class Window extends JFrame {
                         }
                         setVolumeSFX(volumeSfx);
                         playSound("volumeModify.wav");
-                        System.out.println("down volume");
                     }
 
-                    if(keysDown.contains(KeyEvent.VK_D) && System.currentTimeMillis() - cooldown.get("right") > 150) {
+                    if((keysDown.contains(KeyEvent.VK_D) || keysDown.contains(KeyEvent.VK_RIGHT)) && System.currentTimeMillis() - cooldown.get("right") > 150) {
                         cooldown.put("right", System.currentTimeMillis());
                         volumeSfx+=0.05f;
                         if(volumeSfx>1) {
@@ -586,7 +575,6 @@ public class Window extends JFrame {
                         }
                         setVolumeSFX(volumeSfx);
                         playSound("volumeModify.wav");
-                        System.out.println("up volume");
                     }
                     break;
             }
@@ -627,21 +615,21 @@ public class Window extends JFrame {
                 float delta = (now - lastdelta);
                 lastdelta = now;
 
-                if(keysDown.contains(KeyEvent.VK_S)) {
+                if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN))) {
                     grille.setSpeed(speed*10);
                 } else {
                     grille.setSpeed(speed);
                 }
 
                 if(pressedHold) {
-                    if(keysDown.contains(KeyEvent.VK_A) && System.currentTimeMillis() - cooldown.get("Left") > cooldownTime) {
+                    if((keysDown.contains(KeyEvent.VK_A) || keysDown.contains(KeyEvent.VK_LEFT)) && System.currentTimeMillis() - cooldown.get("Left") > cooldownTime) {
                         if(grille.checkCollisionLeft()) {
                             grille.x-=1;
                         }
                         cooldown.put("Left", System.currentTimeMillis());
                     }
 
-                    if(keysDown.contains(KeyEvent.VK_D) && System.currentTimeMillis() - cooldown.get("Right") > cooldownTime) {
+                    if((keysDown.contains(KeyEvent.VK_D) || keysDown.contains(KeyEvent.VK_RIGHT)) && System.currentTimeMillis() - cooldown.get("Right") > cooldownTime) {
                         if(grille.checkCollisionRight()) {
                             grille.x+=1;
                         }
@@ -748,21 +736,21 @@ public class Window extends JFrame {
                 float delta = (now - lastdelta);
                 lastdelta = now;
 
-                if(keysDown.contains(KeyEvent.VK_S)) {
+                if((keysDown.contains(KeyEvent.VK_S) || keysDown.contains(KeyEvent.VK_DOWN))) {
                     grille.setSpeed(speed*10);
                 } else {
                     grille.setSpeed(speed);
                 }
 
                 if(pressedHold) {
-                    if(keysDown.contains(KeyEvent.VK_A) && System.currentTimeMillis() - cooldown.get("Left") > cooldownTime) {
+                    if((keysDown.contains(KeyEvent.VK_A) || keysDown.contains(KeyEvent.VK_LEFT)) && System.currentTimeMillis() - cooldown.get("Left") > cooldownTime) {
                         if(grille.checkCollisionLeft()) {
                             grille.x-=1;
                         }
                         cooldown.put("Left", System.currentTimeMillis());
                     }
 
-                    if(keysDown.contains(KeyEvent.VK_D) && System.currentTimeMillis() - cooldown.get("Right") > cooldownTime) {
+                    if((keysDown.contains(KeyEvent.VK_D) || keysDown.contains(KeyEvent.VK_RIGHT)) && System.currentTimeMillis() - cooldown.get("Right") > cooldownTime) {
                         if(grille.checkCollisionRight()) {
                             grille.x+=1;
                         }
@@ -937,9 +925,6 @@ public class Window extends JFrame {
             push=3;
             drawString(words.get("nosave").get(language), 70f, 130, 360+(120*(push-decalage)), Color.white, Color.black);
         }
-        System.out.println("push:" + push);
-        System.out.println("decal:" + decalage);
-        System.out.println("select:" + selection);
 
         // drawString(words.get("newgame").get(language), 70f, 130, 480, Color.white, Color.black);
         // drawString(words.get("loadgame").get(language), 70f, 130, 600, Color.white, Color.black);
